@@ -1,0 +1,20 @@
+{
+  "export_time": "2026-06-07T12:52:04.623716",
+  "job_count": 7,
+  "source_file": "all_jobs_demo.csv",
+  "platforms": {
+    "naukri": 4,
+    "remoteok": 3
+  },
+  "job_types": {
+    "Full-time": 4,
+    "Remote": 3
+  },
+  "locations": {
+    "Bengaluru": 1,
+    "Remote": 3,
+    "Pune": 1,
+    "Hyderabad": 1,
+    "Chennai": 1
+  }
+}

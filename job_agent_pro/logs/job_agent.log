@@ -1,0 +1,36 @@
+2026-06-07 13:48:09 - job_agent - INFO - job_agent.py:71 - Naukri scraper initialized
+2026-06-07 13:48:09 - job_agent - INFO - job_agent.py:77 - RemoteOK scraper initialized
+2026-06-07 13:48:09 - job_agent - INFO - job_agent.py:284 - ==================================================
+2026-06-07 13:48:09 - job_agent - INFO - job_agent.py:285 - Starting full job agent pipeline
+2026-06-07 13:48:09 - job_agent - INFO - job_agent.py:286 - ==================================================
+2026-06-07 13:48:09 - job_agent - INFO - job_agent.py:119 - Starting job scrape from 2 platforms
+2026-06-07 13:48:09 - job_agent - INFO - job_agent.py:120 - Job Role: Product Manager, Location: Bengaluru
+2026-06-07 13:48:10 - job_agent - INFO - job_agent.py:130 - Scraping complete: 0 total jobs scraped
+2026-06-07 13:48:10 - job_agent - WARNING - job_agent.py:298 - No jobs scraped, stopping pipeline
+2026-06-07 13:48:18 - job_agent - INFO - job_agent.py:71 - Naukri scraper initialized
+2026-06-07 13:48:18 - job_agent - INFO - job_agent.py:77 - RemoteOK scraper initialized
+2026-06-07 13:48:18 - job_agent - INFO - job_agent.py:284 - ==================================================
+2026-06-07 13:48:18 - job_agent - INFO - job_agent.py:285 - Starting full job agent pipeline
+2026-06-07 13:48:18 - job_agent - INFO - job_agent.py:286 - ==================================================
+2026-06-07 13:48:18 - job_agent - INFO - job_agent.py:119 - Starting job scrape from 2 platforms
+2026-06-07 13:48:18 - job_agent - INFO - job_agent.py:120 - Job Role: Product Manager, Location: Bengaluru
+2026-06-07 13:48:19 - job_agent - INFO - job_agent.py:130 - Scraping complete: 0 total jobs scraped
+2026-06-07 13:48:19 - job_agent - WARNING - job_agent.py:298 - No jobs scraped, stopping pipeline
+2026-06-07 13:48:36 - job_agent - INFO - job_agent.py:71 - Naukri scraper initialized
+2026-06-07 13:48:36 - job_agent - INFO - job_agent.py:77 - RemoteOK scraper initialized
+2026-06-07 13:48:36 - job_agent - INFO - job_agent.py:284 - ==================================================
+2026-06-07 13:48:36 - job_agent - INFO - job_agent.py:285 - Starting full job agent pipeline
+2026-06-07 13:48:36 - job_agent - INFO - job_agent.py:286 - ==================================================
+2026-06-07 13:48:36 - job_agent - INFO - job_agent.py:119 - Starting job scrape from 2 platforms
+2026-06-07 13:48:36 - job_agent - INFO - job_agent.py:120 - Job Role: Product Manager, Location: Bengaluru
+2026-06-07 13:48:36 - job_agent - INFO - job_agent.py:130 - Scraping complete: 0 total jobs scraped
+2026-06-07 13:48:36 - job_agent - WARNING - job_agent.py:298 - No jobs scraped, stopping pipeline
+2026-06-07 13:48:54 - job_agent - INFO - job_agent.py:71 - Naukri scraper initialized
+2026-06-07 13:48:54 - job_agent - INFO - job_agent.py:77 - RemoteOK scraper initialized
+2026-06-07 13:48:54 - job_agent - INFO - job_agent.py:284 - ==================================================
+2026-06-07 13:48:54 - job_agent - INFO - job_agent.py:285 - Starting full job agent pipeline
+2026-06-07 13:48:54 - job_agent - INFO - job_agent.py:286 - ==================================================
+2026-06-07 13:48:54 - job_agent - INFO - job_agent.py:119 - Starting job scrape from 2 platforms
+2026-06-07 13:48:54 - job_agent - INFO - job_agent.py:120 - Job Role: Product Manager, Location: Bengaluru
+2026-06-07 13:48:55 - job_agent - INFO - job_agent.py:130 - Scraping complete: 0 total jobs scraped
+2026-06-07 13:48:55 - job_agent - WARNING - job_agent.py:298 - No jobs scraped, stopping pipeline

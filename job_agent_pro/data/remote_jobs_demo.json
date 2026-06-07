@@ -1,0 +1,14 @@
+{
+  "export_time": "2026-06-07T12:52:04.628460",
+  "job_count": 3,
+  "source_file": "remote_jobs_demo.csv",
+  "platforms": {
+    "remoteok": 3
+  },
+  "job_types": {
+    "Remote": 3
+  },
+  "locations": {
+    "Remote": 3
+  }
+}

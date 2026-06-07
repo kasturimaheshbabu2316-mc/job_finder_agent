@@ -1,0 +1,261 @@
+# Job Agent
+
+Multi-platform job scraping agent that aggregates job listings from Naukri and RemoteOK based on user-provided job role and location preferences into a structured CSV format for easy analysis and filtering.
+
+## Features
+
+- **Multi-platform Scraping**: Extract job data from Naukri (HTML scraping) and RemoteOK (public API)
+- **User-Driven Search**: Accept exact job role and location as user input for targeted job searches
+- **Input Validation**: Validate and normalize user input with automatic correction suggestions
+- **Dynamic Scraper Triggering**: Automatically trigger both platform scrapers with user-provided exact criteria
+- **Job Filtering**: Filter jobs by relevant job titles/keywords, locations, and job types
+- **Data Normalization**: Standardize job fields across different platforms
+- **CSV Export**: Store results in structured CSV format
+- **Deduplication**: Remove duplicate job listings across platforms
+- **Scheduling**: Optional scheduled runs to capture new job postings
+
+## Project Structure
+
+```
+job agent pro/
+├── src/
+│   ├── scrapers/          # Platform-specific scrapers
+│   ├── processors/        # Data processing and normalization
+│   ├── utils/            # Utility functions
+│   ├── exporters/        # Data exporters
+│   ├── models/           # Data models
+│   └── cli/              # CLI interface
+├── tests/                # Test suite
+├── config/               # Configuration files
+├── data/                 # Output data (CSV files)
+├── logs/                 # Application logs
+├── doc/                  # Documentation
+├── config.py             # Centralized configuration
+├── requirements.txt      # Python dependencies
+├── .env.template         # Environment variables template
+└── README.md            # This file
+```
+
+## Installation
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip (Python package manager)
+- Git (optional, for cloning the repository)
+
+### Setup Steps
+
+1. **Clone the repository** (if using Git):
+   ```bash
+   git clone <repository-url>
+   cd job agent pro
+   ```
+
+2. **Create a virtual environment**:
+   ```bash
+   python -m venv .venv
+   ```
+
+3. **Activate the virtual environment**:
+
+   - **Windows**:
+     ```bash
+     .venv\Scripts\activate
+     ```
+
+   - **Mac/Linux**:
+     ```bash
+     source .venv/bin/activate
+     ```
+
+4. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Set up environment variables**:
+   ```bash
+   copy .env.template .env
+   ```
+   
+   Edit the `.env` file and add your API keys:
+   - `FIRECRAWL_API_KEY`: Your Firecrawl API key (required for LinkedIn scraping)
+   - `LINKEDIN_USERNAME`: Your LinkedIn username
+   - `LINKEDIN_PASSWORD`: Your LinkedIn password
+
+6. **Verify the installation**:
+   ```bash
+   python -c "import config; print('Configuration loaded successfully')"
+   ```
+
+## Configuration
+
+The application can be configured through the `.env` file. Here are the key configuration options:
+
+### API Keys and Authentication
+
+- `FIRECRAWL_API_KEY`: Firecrawl API key for LinkedIn scraping
+- `LINKEDIN_USERNAME`: LinkedIn username
+- `LINKEDIN_PASSWORD`: LinkedIn password
+
+### Scraping Settings
+
+- `REQUEST_TIMEOUT`: Request timeout in seconds (default: 30)
+- `MAX_RETRIES`: Maximum number of retry attempts (default: 3)
+- `RATE_LIMIT_DELAY`: Delay between requests in seconds (default: 2)
+
+### Job Filtering
+
+- `DEFAULT_JOB_TITLES`: Comma-separated list of job titles to search for
+- `DEFAULT_LOCATIONS`: Comma-separated list of locations
+- `DEFAULT_JOB_TYPES`: Comma-separated list of job types
+
+### Scheduling
+
+- `ENABLE_SCHEDULING`: Enable scheduled runs (true/false)
+- `SCHEDULE_INTERVAL`: Schedule interval (daily, weekly, hourly)
+- `SCHEDULE_TIME`: Time to run scheduled jobs (HH:MM format)
+
+## Usage
+
+### Basic Usage
+
+Once configured, you can run the job agent:
+
+```bash
+python -m src.job_agent
+```
+
+### Input Validation
+
+The job agent includes built-in input validation for exact job role and location inputs:
+
+- **Automatic normalization**: Common variations like "sw engineer" → "Software Engineer", "blr" → "Bengaluru"
+- **Input validation**: Ensures job role and location are not empty
+- **Suggestions**: Use the `suggest` command to see common job roles and locations
+- **Error handling**: Provides helpful error messages and suggestions for invalid inputs
+
+Get input suggestions:
+```bash
+python -m src.cli.main suggest
+```
+
+### CLI Commands
+
+The application provides a CLI interface for various operations:
+
+```bash
+python -m src.cli.main --help
+```
+
+Available commands:
+- `scrape`: Scrape jobs from configured platforms
+- `filter`: Filter jobs by specific criteria
+- `export`: Export jobs to CSV
+- `stats`: Show statistics about scraped jobs
+
+### Example Workflow
+
+1. **Get suggestions for job roles and locations**:
+   ```bash
+   python -m src.cli.main suggest
+   ```
+
+2. **Scrape jobs with exact user-provided job role and location**:
+   ```bash
+   python -m src.cli.main scrape --keywords "software engineer" --location remote
+   ```
+
+3. **Scrape specific platforms with exact job role and location**:
+   ```bash
+   python -m src.cli.main scrape --platforms naukri remoteok --keywords "data scientist" --location bengaluru
+   ```
+
+4. **Export results to CSV**:
+   ```bash
+   python -m src.cli.main scrape --keywords "Python developer" --location remote --output data/jobs.csv
+   ```
+
+5. **Filter existing data**:
+   ```bash
+   python -m src.cli.main filter --file data/jobs.csv --titles "Software Engineer" --output filtered_jobs.csv
+   ```
+
+## Platform-Specific Notes
+
+### Naukri
+- Uses HTML scraping with BeautifulSoup
+- Respects rate limits to avoid blocking
+- Handles pagination automatically
+- Accepts user-provided job role and location parameters
+
+### RemoteOK
+- Uses official public API
+- No authentication required
+- Structured JSON responses
+- Filters based on user-provided keywords and location
+
+## Development
+
+### Running Tests
+
+```bash
+pytest tests/
+```
+
+### Code Formatting
+
+```bash
+black src/ tests/
+```
+
+### Linting
+
+```bash
+flake8 src/ tests/
+```
+
+### Test Coverage
+
+```bash
+pytest --cov=src tests/
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Import Errors**: Ensure the virtual environment is activated and dependencies are installed
+2. **Configuration Errors**: Verify that `.env` file exists and contains required values
+3. **API Errors**: Check that API keys are valid and have sufficient permissions
+4. **Network Issues**: Ensure internet connectivity and check firewall settings
+
+### Logging
+
+Logs are written to `logs/job_agent.log` by default. Check this file for detailed error information.
+
+## Documentation
+
+- [Context](doc/context.md) - Project overview and context
+- [Architecture](doc/architecture.md) - Detailed phase-wise implementation architecture
+
+## Contributing
+
+This is a personal project for job search automation. Contributions are welcome but please coordinate with the project maintainer.
+
+## License
+
+This project is for personal use. Please respect the terms of service of the job platforms being scraped.
+
+## Disclaimer
+
+This tool is for educational and personal use only. Users are responsible for ensuring compliance with the terms of service of the job platforms they scrape. The authors are not responsible for any misuse of this software.
+
+## Support
+
+For issues and questions, please check the documentation first or create an issue in the repository.
+
+---
+
+**Generated with [Devin](https://cli.devin.ai/docs)**
